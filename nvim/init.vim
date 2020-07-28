@@ -35,20 +35,7 @@ colorscheme onedark
 
 nnoremap <C-p> :FZF<CR>
 
-" Use C-K to show documentation in preview window.
-nnoremap <silent> <C-K> :call <SID>show_documentation()<CR>
-nnoremap <silent> <C-J> :call CocAction('jumpDefinition')<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-let $FZF_DEFAULT_COMMAND='fd --type f'
+let $FZF_DEFAULT_COMMAND='fd --type f --no-ignore-vcs -E "**/node_modules/**/*" -E "**/target/**/*"'
 let g:buftabline_numbers = 1
 
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
+source ~/.config/nvim/coc.vim
