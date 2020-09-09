@@ -8,6 +8,7 @@ Plug 'dense-analysis/ale'
 Plug 'ap/vim-buftabline'
 Plug 'tpope/vim-fugitive'
 Plug 'joshdick/onedark.vim'
+Plug 'preservim/nerdtree'
 
 call plug#end()
 
@@ -37,5 +38,10 @@ nnoremap <C-p> :FZF<CR>
 
 let $FZF_DEFAULT_COMMAND='fd --type f --no-ignore-vcs -E "**/node_modules/**/*" -E "**/target/**/*"'
 let g:buftabline_numbers = 1
+
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+
+let NERDTreeShowHidden = 1
 
 source ~/.config/nvim/coc.vim
