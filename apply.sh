@@ -8,3 +8,7 @@ cp $DIR/nvim/coc.vim ~/.config/nvim/coc.vim
 
 # ZSH
 cp $DIR/zsh/.zshrc ~/.zshrc
+
+# tmux
+cp $DIR/tmux/.tmux.conf ~/.tmux.conf
+

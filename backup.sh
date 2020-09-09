@@ -9,3 +9,8 @@ cp ~/.config/nvim/coc.vim $DIR/nvim/coc.vim
 # ZSH
 mkdir -p $DIR/zsh
 cp ~/.zshrc $DIR/zsh/.zshrc
+
+# tmux
+mkdir -p $DIR/tmux
+cp ~/.tmux.conf $DIR/tmux/.tmux.conf
+
