@@ -52,9 +52,10 @@ fi
 eval "$(starship init bash)"
 
 if grep -q Microsoft /proc/version; then
-  export DISPLAY=localhost:0.0;
+  export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
 fi
 
 if [ -f "$HOME/.cargo/env" ]; then
   source "$HOME/.cargo/env"
 fi
+
