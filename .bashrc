@@ -54,3 +54,11 @@ eval "$(starship init bash)"
 if grep -q Microsoft /proc/version; then
   export DISPLAY=localhost:0.0;
 fi
+
+if [ -f "$HOME/.cargo/env" ]; then
+  source "$HOME/.cargo/env"
+fi
+
+if which opam; then
+  eval $(opam env)
+fi
