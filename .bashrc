@@ -59,3 +59,6 @@ if [ -f "$HOME/.cargo/env" ]; then
   source "$HOME/.cargo/env"
 fi
 
+. "$HOME/.cargo/env"
+
+export PATH=$PATH:/opt/gradle/gradle-7.2/bin
