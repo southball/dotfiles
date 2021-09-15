@@ -62,3 +62,4 @@ fi
 . "$HOME/.cargo/env"
 
 export PATH=$PATH:/opt/gradle/gradle-7.2/bin
+export PATH=$PATH:/home/southball/.yarn/bin
