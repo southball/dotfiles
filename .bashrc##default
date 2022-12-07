@@ -1,6 +1,6 @@
 case $- in
     *i*) ;;
-      *) return;;
+    *) return;;
 esac
 
 HISTCONTROL=ignoreboth
@@ -39,19 +39,31 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+	. /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+	. /etc/bash_completion
+    fi
 fi
 
 eval "$(starship init bash)"
 
 if [ -f "$HOME/.cargo/env" ]; then
-  source "$HOME/.cargo/env"
+    source "$HOME/.cargo/env"
 fi
 
-export EDITOR=vim
+if ! command -v nvim &> /dev/null; then
+    export EDITOR=vim
+else
+    export EDITOR=nvim
+    alias vim=nvim
+fi
 
-alias vim=nvim
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
+export PATH="$PATH:$HOME/.local/bin"
+
+if [ -f "$HOME/.cargo/env" ]; then
+    . "$HOME/.cargo/env"
+fi
