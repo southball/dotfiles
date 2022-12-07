@@ -53,3 +53,5 @@ if [ -f "$HOME/.cargo/env" ]; then
 fi
 
 export EDITOR=vim
+
+alias vim=nvim

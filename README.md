@@ -1,5 +1,8 @@
-# MSYS2
+# dotfiles
 
-Download `yadm` normally.
+```sh
+sudo curl -fLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && sudo chmod a+x /usr/local/bin/yadm
+# or sudo apt-get install yadm
 
-Run `yadm config yadm.alt-copy true` so `yadm` will copy the config file instead.
+yadm clone git@github.com:southball/dotfiles.git
+```
