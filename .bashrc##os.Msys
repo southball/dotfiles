@@ -1,6 +1,0 @@
-# If not running interactively, don't do anything
-[[ "$-" != *i* ]] && return
-
-[[ -f /etc/bash_completion ]] && . /etc/bash_completion
-
-eval "$(starship init bash)"
