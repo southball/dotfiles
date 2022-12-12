@@ -59,9 +59,6 @@ else
     alias vim=nvim
 fi
 
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
 export PATH="$PATH:$HOME/.local/bin"
 
 if [ -f "$HOME/.cargo/env" ]; then
