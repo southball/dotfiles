@@ -52,6 +52,7 @@ This function should only modify configuration layer settings."
                  typescript-backend 'lsp
                  typescript-fmt-tool 'prettier)
      (html :variables web-fmt-tool 'prettier)
+     xclipboard
      ;; better-defaults
      ;; markdown
      ;; spell-checking
@@ -69,7 +70,7 @@ This function should only modify configuration layer settings."
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages
-   '()
+   '(mozc)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -558,14 +559,6 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
-  ;; Approximately half 4K screen
-  (setq initial-frame-alist
-        '(
-          (top . 0)
-          (left . 0)
-          (width . 150)
-          (height . 70)
-          ))
   )
 
 
@@ -584,6 +577,17 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (setq standard-indent 2)
+
+  (set-language-environment "Japanese")
+  (require 'mozc)
+  (setq default-input-method "japanese-mozc")
+  (setq mozc-candidate-style 'overlay)
+
+  (set-terminal-coding-system 'utf-8-unix)
+  (prefer-coding-system 'utf-8-unix)
+  (set-clipboard-coding-system 'utf-8)
+
+  (global-set-key (kbd "<zenkaku-hankaku>") 'toggle-input-method)
   )
 
 
@@ -621,7 +625,7 @@ This function is called at the very end of Spacemacs initialization."
  '(org-fontify-done-headline nil)
  '(org-fontify-todo-headline nil)
  '(package-selected-packages
-   '(lsp-tailwindcss esh-help eshell-prompt-extras eshell-z multi-term multi-vterm project xref shell-pop terminal-here vterm xterm-color flycheck-pos-tip flycheck-rust helm-lsp lsp-origami origami lsp-treemacs lsp-ui lsp-mode eldoc tern js-doc js2-refactor yasnippet multiple-cursors json-mode json-navigator hierarchy json-reformat json-snatcher livid-mode nodejs-repl npm-mode prettier-js skewer-mode js2-mode simple-httpd tide typescript-mode web-beautify company yaml-mode git-link git-messenger git-modes git-timemachine gitignore-templates helm-git-grep helm-ls-git orgit-forge orgit forge yaml ghub closql emacsql-sqlite emacsql treepy smeargle treemacs-magit magit magit-section git-commit with-editor transient evil-org gnuplot helm-org-rifle htmlize org-cliplink org-contrib org org-download org-mime org-pomodoro alert log4e gntp org-present org-projectile org-category-capture org-rich-yank unicode-fonts ucs-utils font-utils persistent-soft pcache solarized-theme ws-butler writeroom-mode winum which-key volatile-highlights vim-powerline vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toml-mode toc-org term-cursor symon symbol-overlay string-inflection string-edit-at-point spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline-all-the-icons space-doc ron-mode restart-emacs request rainbow-delimiters racer quickrun popwin pcre2el password-generator paradox overseer org-superstar open-junk-file nameless multi-line macrostep lorem-ipsum link-hint inspector info+ indent-guide hybrid-mode hungry-delete holy-mode hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav elisp-def editorconfig dumb-jump drag-stuff dotenv-mode dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode cargo auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line))
+   '(mozc lsp-tailwindcss esh-help eshell-prompt-extras eshell-z multi-term multi-vterm project xref shell-pop terminal-here vterm xterm-color flycheck-pos-tip flycheck-rust helm-lsp lsp-origami origami lsp-treemacs lsp-ui lsp-mode eldoc tern js-doc js2-refactor yasnippet multiple-cursors json-mode json-navigator hierarchy json-reformat json-snatcher livid-mode nodejs-repl npm-mode prettier-js skewer-mode js2-mode simple-httpd tide typescript-mode web-beautify company yaml-mode git-link git-messenger git-modes git-timemachine gitignore-templates helm-git-grep helm-ls-git orgit-forge orgit forge yaml ghub closql emacsql-sqlite emacsql treepy smeargle treemacs-magit magit magit-section git-commit with-editor transient evil-org gnuplot helm-org-rifle htmlize org-cliplink org-contrib org org-download org-mime org-pomodoro alert log4e gntp org-present org-projectile org-category-capture org-rich-yank unicode-fonts ucs-utils font-utils persistent-soft pcache solarized-theme ws-butler writeroom-mode winum which-key volatile-highlights vim-powerline vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toml-mode toc-org term-cursor symon symbol-overlay string-inflection string-edit-at-point spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline-all-the-icons space-doc ron-mode restart-emacs request rainbow-delimiters racer quickrun popwin pcre2el password-generator paradox overseer org-superstar open-junk-file nameless multi-line macrostep lorem-ipsum link-hint inspector info+ indent-guide hybrid-mode hungry-delete holy-mode hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav elisp-def editorconfig dumb-jump drag-stuff dotenv-mode dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode cargo auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line))
  '(pdf-view-midnight-colors '("#b2b2b2" . "#262626")))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
