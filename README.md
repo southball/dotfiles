@@ -6,3 +6,13 @@ sudo curl -fLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/m
 
 yadm clone git@github.com:southball/dotfiles.git
 ```
+
+## Bash
+
+- Ctrl-R by fzf
+- starship
+- auto-completions (when available)
+  - kubectl
+- aliases (when available)
+  - cat: bat
+  - vim: nvim
