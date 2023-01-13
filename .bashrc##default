@@ -79,8 +79,16 @@ if [ -f "/usr/share/doc/fzf/examples/key-bindings.bash" ]; then
   source /usr/share/doc/fzf/examples/key-bindings.bash
 fi
 
+if [ -f '$HOME/google-cloud-sdk/path.bash.inc' ];
+  then . '/home/southball/google-cloud-sdk/path.bash.inc'; 
+fi
+
+if [ -f '$HOME/google-cloud-sdk/completion.bash.inc' ];
+  then . '$HOMEgoogle-cloud-sdk/completion.bash.inc';
+fi
+
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:./node_modules/.bin"
 
 set -o vi
 shopt -s globstar nullglob
-
