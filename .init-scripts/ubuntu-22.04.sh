@@ -10,7 +10,7 @@ sudo apt-get install -y \
   direnv
 
 # Starship
-curl -sS https://starship.rs/install.sh | sh
+curl -sS https://starship.rs/install.sh | sh -s -- -y
 
 # Build and install neovim
 if ! command -v nvim &> /dev/null; then
