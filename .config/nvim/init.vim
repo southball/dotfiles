@@ -38,8 +38,20 @@ Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+Plug 'EdenEast/nightfox.nvim'
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+Plug 'phaazon/hop.nvim'
+
 call plug#end()
 
 " NERDTree
-nmap <C-f> :NERDTreeToggle<CR>
+nmap <C-p> :NERDTreeToggle<CR>
 nnoremap <C-Space> :terminal<CR>
+
+" Hop
+lua require'hop'.setup()
+nnoremap <C-f> :HopWord<CR>
+
+colorscheme carbonfox
