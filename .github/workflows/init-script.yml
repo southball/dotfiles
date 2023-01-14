@@ -1,3 +1,5 @@
+name: Init Script Validation
+
 on:
   push:
 
@@ -5,7 +7,8 @@ jobs:
   validate_ubuntu_2204:
     runs-on: ubuntu-22.04
     steps:
-      - use: actions/checkout@v3
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 1
-      - run: bash ./.init_scripts/ubuntu-22.04.sh
+      - run: ls ${{ github.workspace }}
+      - run: bash ${{ github.workspace }}/.init-scripts/ubuntu-22.04.sh
