@@ -1,11 +1,16 @@
 #!/bin/bash
 set -euo pipefail
 
+# apt packages
 sudo apt-get update
 sudo apt-get install -y \
   build-essential \
   fzf \
-  bat
+  bat \
+  direnv
+
+# Starship
+curl -sS https://starship.rs/install.sh | sh
 
 # Build and install neovim
 if ! command -v nvim &> /dev/null; then
