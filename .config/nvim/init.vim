@@ -10,8 +10,8 @@ set splitbelow
 tnoremap <Esc> <C-\><C-N>
 tnoremap <C-w> <C-\><C-N><C-w>
 augroup TerminalStuff
-	au!
-	autocmd TermOpen * setlocal nonumber norelativenumber
+  au!
+  autocmd TermOpen * setlocal nonumber norelativenumber
 augroup END
 set guicursor=
 
@@ -27,27 +27,49 @@ endif
 
 call plug#begin(data_dir)
 
+" Airline on bottom
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" Comment out
 Plug 'tpope/vim-commentary'
 
+" File manager
 Plug 'scrooloose/nerdtree'
 
-" Plug 'Shougo/unite.vim'
+" FZF integration
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+" Nightfox vim
 Plug 'EdenEast/nightfox.nvim'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+" Hop to different places in file quickly
 Plug 'phaazon/hop.nvim'
+
+" LSP
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+
+" Astro language support
+Plug 'wuelnerdotexe/vim-astro'
+
+" Tab line
+Plug 'ap/vim-buftabline'
+
+" Ack
+Plug 'mileszs/ack.vim'
 
 call plug#end()
 
+" Tab
+set hidden
+nnoremap <C-n> :bnext<CR>
+nnoremap <C-p> :bprev<CR>
+
 " NERDTree
-nmap <C-p> :NERDTreeToggle<CR>
+nmap <C-q> :NERDTreeToggle<CR>
 nnoremap <C-Space> :split<CR>:terminal<CR>
 
 " Hop
@@ -55,3 +77,8 @@ lua require'hop'.setup()
 nnoremap <C-f> :HopWord<CR>
 
 colorscheme carbonfox
+
+" Coc
+let g:coc_global_extensions = ["coc-json", "coc-rust-analyzer", "coc-yaml", "coc-tsserver", "coc-vimlsp", "coc-sh", "coc-tailwindcss", "coc-html", "coc-css"]
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+nnoremap <C-A-f> :call CocAction("format")<CR>
