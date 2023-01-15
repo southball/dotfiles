@@ -48,7 +48,7 @@ call plug#end()
 
 " NERDTree
 nmap <C-p> :NERDTreeToggle<CR>
-nnoremap <C-Space> :terminal<CR>
+nnoremap <C-Space> :split<CR>:terminal<CR>
 
 " Hop
 lua require'hop'.setup()
