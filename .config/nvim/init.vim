@@ -62,6 +62,9 @@ Plug 'ap/vim-buftabline'
 " Ack
 Plug 'mileszs/ack.vim'
 
+" Git
+Plug 'tpope/vim-fugitive'
+
 call plug#end()
 
 " Tab
