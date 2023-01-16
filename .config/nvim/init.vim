@@ -41,8 +41,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-" Nightfox vim
+" Colorscheme / theme
 Plug 'EdenEast/nightfox.nvim'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
@@ -76,7 +77,7 @@ nnoremap <C-Space> :split<CR>:terminal<CR>
 lua require'hop'.setup()
 nnoremap <C-f> :HopWord<CR>
 
-colorscheme carbonfox
+colorscheme catppuccin-mocha
 
 " Coc
 let g:coc_global_extensions = ["coc-json", "coc-rust-analyzer", "coc-yaml", "coc-tsserver", "coc-vimlsp", "coc-sh", "coc-tailwindcss", "coc-html", "coc-css"]

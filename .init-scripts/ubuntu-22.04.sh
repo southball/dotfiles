@@ -1,6 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 
+# use faster apt mirror
+sudo sed -i.bak -r 's!http://(jp\.)?archive\.ubuntu\.com/ubuntu/?!https://linux.yz.yamagata-u.ac.jp/ubuntu/!g' /etc/apt/sources.list
+
 # apt packages
 sudo apt-get update
 sudo apt-get install -y \
