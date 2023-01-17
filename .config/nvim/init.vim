@@ -1,6 +1,6 @@
 " General settings
 set cindent autowrite autoindent incsearch
-set tabstop=2 shiftwidth=2 softtabstop=2 timeoutlen=50
+set tabstop=2 shiftwidth=2 softtabstop=2
 set number noerrorbells 
 set mouse=a autoread expandtab cursorline hidden
 syntax on
