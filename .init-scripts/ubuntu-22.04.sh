@@ -21,7 +21,7 @@ if ! command -v starship &> /dev/null; then
       echo Starship is not setup correctly. Terminating.
       exit 1;
     fi
-  EOF
+EOF
   )"
 fi
 
