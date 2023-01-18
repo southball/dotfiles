@@ -13,15 +13,17 @@ sudo apt-get install -y \
   direnv
 
 # Starship
-curl -sS https://starship.rs/install.sh | sh -s -- -y
-env -i bash -i -c "$(cat<<EOF
-  source .bashrc;
-  if [ -z $STARSHIP_SHELL ]; then 
-    echo Starship is not setup correctly. Terminating.
-    exit 1;
-  fi
-EOF
-)"
+if ! command -v starship &> /dev/null; then
+  curl -sS https://starship.rs/install.sh | sh -s -- -y
+  env -i bash -i -c "$(cat<<EOF
+    source .bashrc;
+    if [ -z $STARSHIP_SHELL ]; then 
+      echo Starship is not setup correctly. Terminating.
+      exit 1;
+    fi
+  EOF
+  )"
+fi
 
 # Build and install neovim
 if ! command -v nvim &> /dev/null; then
