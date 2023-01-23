@@ -6,14 +6,12 @@ set mouse=a autoread expandtab cursorline hidden
 syntax on
 
 " Terminal Settings
-set splitbelow
 tnoremap <Esc> <C-\><C-N>
 tnoremap <C-w> <C-\><C-N><C-w>
 augroup TerminalStuff
   au!
   autocmd TermOpen * setlocal nonumber norelativenumber
 augroup END
-set guicursor=
 
 " Other settings
 let NERDTreeShowHidden = 1
@@ -26,6 +24,9 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin(data_dir)
+
+" Toggle terminal
+Plug 'akinsho/toggleterm.nvim', {'tag': '*'}
 
 " Airline on bottom
 Plug 'vim-airline/vim-airline'
@@ -74,7 +75,11 @@ nnoremap <C-p> :bprev<CR>
 
 " NERDTree
 nmap <C-q> :NERDTreeToggle<CR>
-nnoremap <C-Space> :split<CR>:terminal<CR>
+nnoremap <C-Space> :ToggleTerm<CR>
+tnoremap <C-Space> <C-\><C-N>:ToggleTerm<CR>
+
+" Toggleterm
+lua require("toggleterm").setup()
 
 " Hop
 lua require'hop'.setup()
