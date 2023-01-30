@@ -46,6 +46,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'EdenEast/nightfox.nvim'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
+" Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Hop to different places in file quickly
@@ -71,6 +72,15 @@ Plug 'liuchengxu/vim-which-key'
 
 call plug#end()
 
+" Colorscheme
+colorscheme catppuccin-mocha
+
+" which-key
+let mapleader = "\<Space>"
+nnoremap <silent> <leader> :<C-u>WhichKey '<Space>'<CR>
+vnoremap <silent> <leader> :<C-u>WhichKeyVisual '<Space>'<CR>
+let g:which_key_map = {}
+
 " Tab
 set hidden
 nnoremap <C-n> :bnext<CR>
@@ -78,30 +88,28 @@ nnoremap <C-p> :bprev<CR>
 
 " NERDTree
 nmap <C-q> :NERDTreeToggle<CR>
-nnoremap <C-Space> :ToggleTerm<CR>
-tnoremap <C-Space> <C-\><C-N>:ToggleTerm<CR>
 
 " Toggleterm
 lua require("toggleterm").setup()
+nnoremap <C-Space> :ToggleTerm<CR>
+tnoremap <C-Space> <C-\><C-N>:ToggleTerm<CR>
 
 " Hop
 lua require'hop'.setup()
-nnoremap <C-f> :HopWord<CR>
-
-colorscheme catppuccin-mocha
+let g:which_key_map.f = [':HopWord', 'Hop word']
 
 " Coc
 let g:coc_global_extensions = ["coc-json", "coc-rust-analyzer", "coc-yaml", "coc-tsserver", "coc-vimlsp", "coc-sh", "coc-tailwindcss", "coc-html", "coc-css"]
 inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
-nnoremap <C-A-f> :call CocAction("format")<CR>
+let g:which_key_map.c = { 'name': 'LSP' }
+let g:which_key_map.c.a = ['<Plug>(coc-codeaction)', 'Code action']
+let g:which_key_map.c.f = ['<Plug>(coc-format)', 'Code format']
+let g:which_key_map.c.r = ['<Plug>(coc-rename)', 'Rename symbol']
 
-" which-key
-let mapleader = "\<Space>"
-nnoremap <silent> <leader> :<C-u>WhichKey '<Space>'<CR>
-vnoremap <silent> <leader> :<C-u>WhichKeyVisual '<Space>'<CR>
-let g:which_key_map = {}
-let g:which_key_map['g'] = [ ':Git', 'Git' ]
-let g:which_key_map['p'] = [ ':FZF', 'Find file' ]
+" Other keybinds
+let g:which_key_map.g = [':Git', 'Git']
+let g:which_key_map.p = [':FZF', 'Find file']
+let g:which_key_map['/'] = [':Commentary', 'Commentary']
 call which_key#register('<Space>', "g:which_key_map")
 
-
+nnoremap q :q<CR>
