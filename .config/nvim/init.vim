@@ -66,6 +66,9 @@ Plug 'mileszs/ack.vim'
 " Git
 Plug 'tpope/vim-fugitive'
 
+" Which key
+Plug 'liuchengxu/vim-which-key'
+
 call plug#end()
 
 " Tab
@@ -91,3 +94,14 @@ colorscheme catppuccin-mocha
 let g:coc_global_extensions = ["coc-json", "coc-rust-analyzer", "coc-yaml", "coc-tsserver", "coc-vimlsp", "coc-sh", "coc-tailwindcss", "coc-html", "coc-css"]
 inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 nnoremap <C-A-f> :call CocAction("format")<CR>
+
+" which-key
+let mapleader = "\<Space>"
+nnoremap <silent> <leader> :<C-u>WhichKey '<Space>'<CR>
+vnoremap <silent> <leader> :<C-u>WhichKeyVisual '<Space>'<CR>
+let g:which_key_map = {}
+let g:which_key_map['g'] = [ ':Git', 'Git' ]
+let g:which_key_map['p'] = [ ':FZF', 'Find file' ]
+call which_key#register('<Space>', "g:which_key_map")
+
+
