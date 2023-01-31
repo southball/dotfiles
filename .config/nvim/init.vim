@@ -81,14 +81,6 @@ nnoremap <silent> <leader> :<C-u>WhichKey '<Space>'<CR>
 vnoremap <silent> <leader> :<C-u>WhichKeyVisual '<Space>'<CR>
 let g:which_key_map = {}
 
-" Tab
-set hidden
-nnoremap <C-n> :bnext<CR>
-nnoremap <C-p> :bprev<CR>
-
-" NERDTree
-nmap <C-q> :NERDTreeToggle<CR>
-
 " Toggleterm
 lua require("toggleterm").setup()
 nnoremap <C-Space> :ToggleTerm<CR>
@@ -108,7 +100,32 @@ let g:which_key_map.c.r = ['<Plug>(coc-rename)', 'Rename symbol']
 
 " Other keybinds
 let g:which_key_map.g = [':Git', 'Git']
-let g:which_key_map.p = [':FZF', 'Find file']
+
+let g:which_key_map.b = {
+      \ 'name': 'Buffer',
+      \ 'n': [':bnext', 'Next buffer'],
+      \ 'p': [':bprev', 'Previous buffer'],
+      \ 'd': [':bdelete', 'Delete buffer'],
+      \ }
+
+let g:which_key_map.f = {
+      \ 'name': 'Files',
+      \ 'f': [':FZF', 'Find file'],
+      \ 's': [':w', 'Save'],
+      \ 't': [':NERDTreeToggle', 'Toggle tree']
+      \ }
+
+let g:which_key_map.w = {
+      \ 'name': 'Window',
+      \ '/': [':vsplit', 'Vertical split'],
+      \ '-': [':split', 'Horizontal split'],
+      \ '=': [':wincmd =', 'Equal split'],
+      \ 'h': [':wincmd h', 'Go to left'],
+      \ 'j': [':wincmd j', 'Go to down'],
+      \ 'k': [':wincmd k', 'Go to up'],
+      \ 'l': [':wincmd l', 'Go to right'],
+      \ }
+
 let g:which_key_map['/'] = [':Commentary', 'Commentary']
 call which_key#register('<Space>', "g:which_key_map")
 
