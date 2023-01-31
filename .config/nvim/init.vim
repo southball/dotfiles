@@ -6,7 +6,7 @@ set mouse=a autoread expandtab cursorline hidden
 syntax on
 
 " Terminal Settings
-tnoremap <Esc> <C-\><C-N>
+tnoremap <expr> <Esc> (&filetype == "fzf") ? "<Esc>" : "<c-\><c-n>"
 tnoremap <C-w> <C-\><C-N><C-w>
 augroup TerminalStuff
   au!
@@ -88,7 +88,9 @@ tnoremap <C-Space> <C-\><C-N>:ToggleTerm<CR>
 
 " Hop
 lua require'hop'.setup()
-let g:which_key_map.f = [':HopWord', 'Hop word']
+
+" FZF
+let g:fzf_preview_window = 'right:50%'
 
 " Coc
 let g:coc_global_extensions = ["coc-json", "coc-rust-analyzer", "coc-yaml", "coc-tsserver", "coc-vimlsp", "coc-sh", "coc-tailwindcss", "coc-html", "coc-css"]
@@ -103,6 +105,7 @@ let g:which_key_map.g = [':Git', 'Git']
 
 let g:which_key_map.b = {
       \ 'name': 'Buffer',
+      \ 'b': [':Buffers', 'List buffers'],
       \ 'n': [':bnext', 'Next buffer'],
       \ 'p': [':bprev', 'Previous buffer'],
       \ 'd': [':bdelete', 'Delete buffer'],
@@ -110,10 +113,14 @@ let g:which_key_map.b = {
 
 let g:which_key_map.f = {
       \ 'name': 'Files',
+      \ 'c': [':e ~/.config/nvim/init.vim', 'Open config file'],
       \ 'f': [':FZF', 'Find file'],
+      \ 'r': [':source ~/.config/nvim/init.vim', 'Source current file'],
       \ 's': [':w', 'Save'],
       \ 't': [':NERDTreeToggle', 'Toggle tree']
       \ }
+
+let g:which_key_map.j = [':HopWord', 'Hop word']
 
 let g:which_key_map.w = {
       \ 'name': 'Window',
@@ -125,6 +132,8 @@ let g:which_key_map.w = {
       \ 'k': [':wincmd k', 'Go to up'],
       \ 'l': [':wincmd l', 'Go to right'],
       \ }
+
+let g:which_key_map[' '] = [':Maps', 'Commands']
 
 let g:which_key_map['/'] = [':Commentary', 'Commentary']
 call which_key#register('<Space>', "g:which_key_map")
