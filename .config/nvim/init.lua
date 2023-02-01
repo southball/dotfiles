@@ -39,7 +39,7 @@ require("lazy").setup({
     "folke/which-key.nvim",
     config = function()
       vim.o.timeout = true
-      vim.o.timeoutlen = 0
+      vim.o.timeoutlen = 500
       require("which-key").setup()
     end
   },
@@ -73,11 +73,17 @@ require("which-key").register({
     p = { "<cmd>bprev<cr>", "Previous buffer" },
     d = { "<cmd>bdelete<cr>", "Delete buffer" },
   },
+  c = {
+    name = "LSP",
+    a = { "<Plug>(coc-codeaction)", "Code action" },
+    f = { "<Plug>(coc-format)", "Format file" },
+    r = { "<Plug>(coc-rename)", "Rename symbol" },
+  },
   f = {
     name = "File",
     c = { "<cmd>e ~/.config/nvim/init.lua<cr>", "Open config file" },
     f = { "<cmd>FZF<cr>", "Find file" },
-    t = { "<cmd>Fern . -reveal=% -drawer -toggle<cr>", "Toggle file tree" },
+    t = { "<cmd>Fern . -reveal=%<cr>", "Toggle file tree" },
     s = { "<cmd>w<cr>", "Save" },
     r = { "<cmd>source ~/.config/nvim/init.lua<cr>", "Reload config file" }
   },
@@ -94,8 +100,8 @@ require("which-key").register({
     l = { "<cmd>wincmd l<cr>", "Go to right" },
   },
   [" "] = { "<cmd>Maps<cr>", "Commands" },
-  ["/"] = { "<cmd>Commentary<cr>", "Commentary" }
-}, { prefix = "<leader>", silent = false })
+  ["/"] = { ":Commentary<cr>", "Commentary" }
+}, { prefix = "<leader>", silent = false, mode = {"n", "v"} })
 
 -- Hop
 require("hop").setup()
@@ -104,7 +110,7 @@ require("hop").setup()
 vim.g.fzf_preview_window = 'right:50%'
 
 -- coc.nvim
-vim.g.coc_global_extensions = { "coc-json", "coc-rust-analyzer", "coc-yaml", "coc-tsserver", "coc-vimlsp", "coc-sh", "coc-tailwindcss", "coc-html", "coc-css", "coc-lua" }
+vim.g.coc_global_extensions = { "coc-json", "coc-rust-analyzer", "coc-yaml", "coc-tsserver", "coc-vimlsp", "coc-sh", "coc-tailwindcss", "coc-html", "coc-css", "coc-lua", "coc-prettier" }
 vim.cmd([[ inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>" ]])
 
 -- ToggleTerm
