@@ -77,7 +77,7 @@ require("which-key").register({
     name = "File",
     c = { "<cmd>e ~/.config/nvim/init.lua<cr>", "Open config file" },
     f = { "<cmd>FZF<cr>", "Find file" },
-    t = { "<cmd>Fern . -reveal=% -drawer<cr>", "Toggle file tree" },
+    t = { "<cmd>Fern . -reveal=% -drawer -toggle<cr>", "Toggle file tree" },
     s = { "<cmd>w<cr>", "Save" },
     r = { "<cmd>source ~/.config/nvim/init.lua<cr>", "Reload config file" }
   },
