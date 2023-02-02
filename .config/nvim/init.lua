@@ -1,18 +1,18 @@
 -- Vim settings
-vim.o.cindent = true
-vim.o.autowrite = true
-vim.o.autoindent = true
-vim.o.incsearch = true
-vim.o.tabstop = 2
-vim.o.shiftwidth = 2
-vim.o.softtabstop = 2
-vim.o.number = true
-vim.o.errorbells = false
-vim.o.mouse = "a"
-vim.o.autoread = true
-vim.o.expandtab = true
-vim.o.cursorline = true
-vim.o.hidden = true
+vim.opt.cindent = true
+vim.opt.autowrite = true
+vim.opt.autoindent = true
+vim.opt.incsearch = true
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
+vim.opt.number = true
+vim.opt.errorbells = false
+vim.opt.mouse = "a"
+vim.opt.autoread = true
+vim.opt.expandtab = true
+vim.opt.cursorline = true
+vim.opt.hidden = true
 vim.cmd.syntax "on"
 
 -- Leader key
@@ -62,7 +62,7 @@ require("lazy").setup({
 
 vim.cmd.colorscheme("catppuccin-mocha")
 
-vim.cmd("autocmd FileType fern set nonumber")
+vim.cmd("autocmd FileType fern setlocal nonumber")
 
 -- Which key
 require("which-key").register({
