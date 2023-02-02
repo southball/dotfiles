@@ -12,6 +12,9 @@ sudo apt-get install -y \
   bat \
   direnv
 
+# TPM
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 # Starship
 if ! command -v starship &> /dev/null; then
   curl -sS https://starship.rs/install.sh | sh -s -- -y
