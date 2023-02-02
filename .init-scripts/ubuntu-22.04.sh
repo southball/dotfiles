@@ -13,7 +13,9 @@ sudo apt-get install -y \
   direnv
 
 # TPM
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+if ! [ -d "~/.tmux/plugins/tpm" ]; then
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
 
 # Starship
 if ! command -v starship &> /dev/null; then
