@@ -93,12 +93,17 @@ if [ -f "/usr/share/bash-completion/completions/fzf" ]; then
   source /usr/share/bash-completion/completions/fzf
 fi
 
-if [ -f '$HOME/google-cloud-sdk/path.bash.inc' ];
-  then . '/home/southball/google-cloud-sdk/path.bash.inc'; 
+if [ -f "$HOME/google-cloud-sdk/path.bash.inc" ];
+  then . "/home/southball/google-cloud-sdk/path.bash.inc"; 
 fi
 
-if [ -f '$HOME/google-cloud-sdk/completion.bash.inc' ];
-  then . '$HOME/google-cloud-sdk/completion.bash.inc';
+if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ];
+  then . "$HOME/google-cloud-sdk/completion.bash.inc";
+fi
+
+if [ -d "$HOME/.volta" ]; then
+  export VOLTA_HOME="$HOME/.volta"
+  export PATH="$VOLTA_HOME/bin:$PATH"
 fi
 
 export PATH="$PATH:$HOME/.local/bin"
@@ -106,3 +111,4 @@ export PATH="$PATH:./node_modules/.bin"
 
 set -o vi
 shopt -s globstar nullglob
+
