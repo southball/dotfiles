@@ -77,6 +77,7 @@ require("which-key").register({
     name = "LSP",
     a = { "<Plug>(coc-codeaction)", "Code action" },
     f = { "<Plug>(coc-format)", "Format file" },
+    g = { "<Plug>(coc-definition)", "Go to definition" },
     r = { "<Plug>(coc-rename)", "Rename symbol" },
   },
   f = {
