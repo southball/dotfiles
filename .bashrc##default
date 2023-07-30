@@ -4,9 +4,11 @@ case $- in
 esac
 
 HISTCONTROL=ignoreboth
-shopt -s histappend
 HISTFILESIZE=2000
+set -o vi
+shopt -s histappend
 shopt -s checkwinsize
+shopt -s globstar nullglob
 
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -106,9 +108,26 @@ if [ -d "$HOME/.volta" ]; then
   export PATH="$VOLTA_HOME/bin:$PATH"
 fi
 
+if [ -d "$HOME/.pyenv" ]; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+fi
+
+if [ -d "$HOME/.rbenv" ]; then
+  eval "$($HOME/.rbenv/bin/rbenv init - bash)"
+fi
+
+if [ -d "$HOME/.ghcup" ]; then
+  [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
+fi
+
+if [ -d "$HOME/go" ]; then
+  export PATH=$PATH:/home/southball/go/bin
+fi
+
 export PATH="$PATH:$HOME/.local/bin"
+
 export PATH="$PATH:./node_modules/.bin"
 
-set -o vi
-shopt -s globstar nullglob
 
