@@ -4,30 +4,26 @@ set -euo pipefail
 # use faster apt mirror
 sudo sed -i.bak -r 's!http://(jp\.)?archive\.ubuntu\.com/ubuntu/?!https://linux.yz.yamagata-u.ac.jp/ubuntu/!g' /etc/apt/sources.list
 
-# apt packages
+# install apt-fast
+sudo add-apt-repository -y ppa:apt-fast/stable
 sudo apt-get update
-sudo apt-get install -y \
+sudo apt-get -y install apt-fast
+
+# apt packages
+sudo apt-fast update
+sudo apt-fast install -y \
   build-essential \
   fzf \
-  bat \
-  direnv
+  jq \
+  direnv \
+  zsh
 
-# TPM
-if ! [ -d "~/.tmux/plugins/tpm" ]; then
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-fi
+# Set default shell to zsh
+sudo chsh -s /bin/zsh $(whoami)
 
 # Starship
 if ! command -v starship &> /dev/null; then
   curl -sS https://starship.rs/install.sh | sh -s -- -y
-  env -i bash -i -c "$(cat<<EOF
-    source .bashrc;
-    if [ -z $STARSHIP_SHELL ]; then 
-      echo Starship is not setup correctly. Terminating.
-      exit 1;
-    fi
-EOF
-  )"
 fi
 
 # Build and install neovim
@@ -50,5 +46,4 @@ if ! command -v nvim &> /dev/null; then
   echo nvim build/installation failed.
   exit 1
 fi
-
 
