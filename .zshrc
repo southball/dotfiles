@@ -44,4 +44,4 @@ export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border \
   --bind 'ctrl-/:change-preview-window(80%|hidden|)' \
   --bind 'shift-up:preview-half-page-up,shift-down:preview-half-page-down'"
 
-source .zshrc2
+source $HOME/.zshrc2
